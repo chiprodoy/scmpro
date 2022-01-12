@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdusenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,8 @@ Route::get('/', function () {
 });
 
 Route::resource('/home', HomeController::class);
+Route::resource('/produsen', ProdusenController::class);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

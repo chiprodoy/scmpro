@@ -14,10 +14,13 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/adminlte/css/adminlte.min.css') }}">
 
+  <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/jquery.easyui/themes/material/easyui.css') }}">
   <!-- jQuery -->
   <script src="{{ asset('assets/plugins/jquery/jquery.min.js')}}" type="text/javascript"></script>
   <script src="{{ asset('assets/jquery.easyui/jquery.easyui.min.js') }}" type="text/javascript"></script>
+  <script type="text/javascript" src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
   @yield('js')
 
@@ -146,7 +149,7 @@
                 </a>
               </li>
             </ul>
-          </nav>
+        </nav>
           <!-- /.navbar -->
 
           <!-- Main Sidebar Container -->

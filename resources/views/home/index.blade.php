@@ -16,7 +16,7 @@
             </div><!-- /.container-fluid -->
           </div>
           <!-- /.content-header -->
-              <!-- Main content -->
+          <!-- Main content -->
           <div class="content">
               <div class="container-fluid">
                 <div class="row">

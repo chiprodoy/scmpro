@@ -1,7 +1,7 @@
 
     <!-- Simplicity is an acquired taste. - Katharine Gerould -->
     <div class="form-group row">
-        <label for="{{$name}}" class="col-md-4 col-form-label">
+        <label for="{{$name}}" class="col-md-2 col-form-label">
           <strong>  {{$label}} </strong>
         </label>
         <div class="col-sm-10">

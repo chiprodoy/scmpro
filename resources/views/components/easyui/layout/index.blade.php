@@ -12,89 +12,55 @@
     @endif --}}
     @append
     @section('content')
-    <div id="crudCreate" class="mb-5">
+           <!-- Content Header (Page header) -->
+           <div class="content-header">
+            <div class="container-fluid">
+              <div class="row mb-2">
+                <div class="col-sm-6">
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard v3</li>
+                  </ol>
+                </div><!-- /.col -->
+              </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+          </div>        <!-- /.content-header -->
 
-        <div class="mt-5 md:mt-0 md:col-span-2">
-              <div class="shadow overflow-hidden sm:rounded-md">
-                <div class="px-4 py-5 bg-white sm:p-6">
-                    <x-tailwind::toolbar />
+          <!-- Main content -->
+          <div class="content" id="index">
+            <div class="container-fluid">
+                <div class="row">
 
-                    <div class="grid grid-cols-6 gap-6">
-                        @if(View::exists($controllerName.'.crud.create'))
-                            @include($controllerName.'.crud.create')
-                            @yield('create-form')
-                        @else
-                            <x-tailwind-layout::create
-                                :formFields="$formfields"
-                                :controllerName="$controllerName"
-                            />
+                    <div class="col-md-12">
+                        <div class="card card-outline card-tabs">
+                            <div class="card-header p-0 pt-1 border-bottom-0">
+                            </div> <!-- end card header -->
+                            <div class="card-body">
+                                <div class="col-md-12">
+                                    <x-easyui::crud-toolbar />
 
-
-                         @endif
-                    </div>
-                </div>
-                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                    <x-tailwind::toolbar />
-
-                </div>
-              </div>
-        </div>
-    </div>
-    <div id="crudUpdate" class="mb-5">
-        <div class="mt-5 md:mt-0 md:col-span-2">
-              <div class="shadow overflow-hidden sm:rounded-md">
-                <div class="px-4 py-5 bg-white sm:p-6">
-                    <x-tailwind::toolbar />
-
-                    <div class="grid grid-cols-6 gap-6">
-                        @if(View::exists($controllerName.'.crud.update'))
-                            @include($controllerName.'.crud.update')
-                            @yield('create-form')
-                        @else
-                            <x-tailwind-layout::update
-                                :formFields="$formfields"
-                                :controllerName="$controllerName"
-                            />
-
-
-                         @endif
-                    </div>
-                </div>
-                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                    <x-tailwind::toolbar />
-
-                </div>
-              </div>
-        </div>
-    </div>
-    <div id="crudIndex">
-        <div class="mt-5 md:mt-0 md:col-span-2">
-            <div class="shadow overflow-hidden sm:rounded-md">
-                <div class="px-4 py-5 bg-white sm:p-6">
-                    {{-- check costum toolbar in view. if exist use it, if not use default --}}
-                    @if (View::exists($controllerName.'.crud.toolbar'))
-                        @include($controllerName.'.crud.toolbar')
-                        @yield('toolbar')
-                    @else
-                        <x-tailwind::crud-toolbar />
-                    @endif
-                    {{-- check costum table grid in view. if exist use it, if not use default table grid --}}
-                    @if (View::exists($controllerName.'.crud.tablegrid'))
-                        @include($controllerName.'.crud.tablegrid')
-                        @yield('tablegrid')
-                    @else
-                        <x-tailwind::data-grid
-                        :id="$controllerName"
-                        :controllerName="$controllerName"
-                        :title="$controllerName"
-                        :url=url($controllerName)
-                        :tableHeader="$viewAble" />
-                    @endif
-                </div>
-            </div>
-        </div>
-
-    </div>
+                                </div> <!-- end toolbar col -->
+                                @if (View::exists($controllerName.'.crud.tablegrid'))
+                                    @include($controllerName.'.crud.tablegrid')
+                                    @yield('tablegrid')
+                                @else
+                                    <x-easyui::data-grid
+                                    :id="$controllerName"
+                                    :title="$controllerName"
+                                    :url=url($controllerName)
+                                    :columns="$viewAble"
+                                    />
+                                @endif
+                            </div> <!-- end card body -->
+                        </div> <!-- end card -->
+                    </div><!-- end col -->
+                </div> <!-- end row -->
+            </div><!-- end continer fluid -->
+          </div> <!-- end index -->
+          @includeFirst([$controllerName.'crud.create','components.'.$theme.'.layout.create'])
+          @includeFirst([$controllerName.'crud.update','components.'.$theme.'.layout.update'])
 
     <script type="text/javascript">
 
@@ -106,8 +72,8 @@
         timer: 3000
         });
 
-        $('#crudCreate').hide();
-        $('#crudUpdate').hide();
+        $('#create').hide();
+        $('#update').hide();
 
         $('#crud_btn_search').click(function(){
             dg.datagrid('load', {
@@ -118,24 +84,23 @@
 
         $('#crud_btn_add').click(function(){
             $("#frmcreate")[0].reset();
-            $('#crudCreate').show();
-            $('#crudIndex').hide();
+            $('#create').show();
+            $('#index').hide();
 
         });
 
-        $('#crudCreate #btn_back').click(function(){
-            $('#crudCreate').hide();
-            $('#crudIndex').show();
+        $('#create .btn_back').click(function(){
+            $('#create').hide();
+            $('#index').show();
+            dg.datagrid('load');
+
         });
 
-        $('#crud_btn_edit').click(function(){
-            $('#crudUpdate').show();
-            $('#crudIndex').hide();
-        });
+        $('#update .btn_back').click(function(){
+            $('#update').hide();
+            $('#index').show();
+            dg.datagrid('load');
 
-        $('#crudUpdate #btn_back').click(function(){
-            $('#crudUpdate').hide();
-            $('#crudIndex').show();
         });
         /*
         *
@@ -165,7 +130,6 @@
                                 icon: 'success',
                                 title: 'Data Berhasil Dihapus'
                                 })
-                                dg.datagrid('reload');
                                 // Do something with the result
                             },
                             error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -175,6 +139,8 @@
                                 })
                             }
                         });
+                        dg.datagrid('reload');
+
                     }
                  }else{
                     alert('tidak ada data terpilih');
@@ -188,14 +154,18 @@
         */
         $('#crud_btn_edit').click(function(){
             var rows = dg.datagrid('getSelections');
-                if(rows.length > 0){
+                if(rows.length > 0 && rows.length < 2){
                     rows.forEach(function(v,i) {
                         for(key in v)
                         {
                         if(v.hasOwnProperty(key))
-                            $('input[name='+key+']').val(v[key]);
+                            $('#update input[name='+key+']').val(v[key]);
                         }
                     });
+                    $('#update').show();
+                    $('#index').hide();
+                }else if(rows.length > 1){
+                    alert('pilih satu baris saja');
 
                 }else{
                     alert('tidak ada data terpilih');
@@ -206,23 +176,23 @@
         *   create /save Button action
         *
         */
-        $('#crudCreate #btn_save').click(function(){
-            var actUrl=$('#crudCreate form').attr('action');
+        $('#create .btn_save').click(function(){
+            var actUrl=$('#create form').attr('action');
             $.ajax({
                 url: actUrl,
                 headers: {
                     'Accept':'application/json',
                     'X-CSRF-Token': '{{ csrf_token() }}'
                 },
-                data:  $('#crudCreate form').serialize(),
+                data:  $('#create form').serialize(),
                 method: 'POST',
                 async: false,
                 success: function(result) {
                     Toast.fire({
                     icon: 'success',
                     title: 'Data Berhasil Disimpan'
-                    })
-                    dg.datagrid('reload');
+                    });
+                    dg.datagrid('load');
                    // Do something with the result
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -240,8 +210,8 @@
         *   UPDATE /save Button action
         *
         */
-        $('#crudUpdate #btn_save').click(function(){
-            var actUrl=$('#crudUpdate form').attr('action');
+        $('#update .btn_save').click(function(){
+            var actUrl=$('#update form').attr('action');
             var rows = dg.datagrid('getSelections');
 
             $.ajax({
@@ -250,12 +220,12 @@
                     'Accept':'application/json',
                     'X-CSRF-Token': '{{ csrf_token() }}'
                 },
-                data:  $('#crudUpdate form').serialize(),
+                data:  $('#update form').serialize(),
                 method: 'POST',
                 async: false,
                 success: function(result) {
                     Toast.fire({
-                    icon: 'success ',
+                    icon: 'success',
                     title: 'Data Berhasil Disimpan'
                     })
                     dg.datagrid('reload');
