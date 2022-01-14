@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InventoryItem;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 use Laravel\MF\HasMenuFacades;
 use MF\Controllers\ControllerResources;
-class InventoryItemController extends Controller
+
+class InventoryController extends Controller
 {
     use HasMenuFacades,ControllerResources{
         ControllerResources::__construct as private __ctrlResConstruct;
         HasMenuFacades::__construct as private __hMFContruct;}
 
-        public $namaModel=InventoryItem::class;
-        public $title="Barang";
-        public $controllerName='inventory_item';
+        public $namaModel=Inventory::class;
+        public $title="Gudang";
+        public $controllerName='inventory';
 
         public function __construct()
         {
