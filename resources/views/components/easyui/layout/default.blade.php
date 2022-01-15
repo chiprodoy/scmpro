@@ -6,21 +6,24 @@
   <title>AdminLTE 3 | Dashboard 3</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"/>
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('assets/adminlte/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/adminlte/css/adminlte.min.css') }}"/>
 
-  <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}"/>
 
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/jquery.easyui/themes/material/easyui.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/jquery.easyui/themes/material/easyui.css') }}"/>
+  <link rel="stylesheet"  href="{{ asset('assets/plugins/select2/css/select2.css')}}" />
+  <link rel="stylesheet"  href="{{ asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}" />
   <!-- jQuery -->
   <script src="{{ asset('assets/plugins/jquery/jquery.min.js')}}" type="text/javascript"></script>
   <script src="{{ asset('assets/jquery.easyui/jquery.easyui.min.js') }}" type="text/javascript"></script>
-  <script type="text/javascript" src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+  <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
 
   @yield('js')
 

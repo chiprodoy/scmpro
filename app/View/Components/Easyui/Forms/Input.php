@@ -37,19 +37,24 @@ class Input extends Component
      * @string
      */
     public $value;
+    /*
+    */
 
-    /**
+    public $inline=true;
+
+    /*
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type,$id,$name,$label='',$value='')
+    public function __construct($type,$id,$name,$label='',$inline=false,$value='')
     {
         $this->type=$type;
         $this->id=$id;
         $this->name=$name;
         $this->label=(isset($label) ? $label : str_replace('_',' ',$name));
         $this->value=$value;
+        $this->inline=$inline;
         //
     }
 

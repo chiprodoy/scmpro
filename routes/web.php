@@ -3,7 +3,9 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InventoryItemController;
+use App\Http\Controllers\PointOfSaleContoller;
 use App\Http\Controllers\ProdusenController;
+use App\Http\Controllers\SellTransactionController;
 use App\Http\Controllers\UnitMeasureController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,10 @@ Route::resource('/produsen', ProdusenController::class);
 Route::resource('/unit_measure', UnitMeasureController::class);
 Route::resource('/inventory', InventoryController::class);
 Route::resource('/inventory_item', InventoryItemController::class);
+
+Route::resource('/pointofsale', PointOfSaleContoller::class);
+Route::resource('/sell_transaction', SellTransactionController::class);
+Route::resource('/sell_transaction_item', PointOfSaleContoller::class);
 
 
 Route::get('/dashboard', function () {

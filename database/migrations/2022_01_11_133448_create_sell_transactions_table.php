@@ -21,7 +21,6 @@ class CreateSellTransactionsTable extends Migration
 
             Schema::create('sell_transactions', function (Blueprint $table) {
                 $table->id();
-                $table->integer('inventory_item_id');
                 $table->string('invoice_number');
                 $table->date('invoice_date');
                 $table->integer('costumer_id');
