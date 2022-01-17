@@ -12,7 +12,7 @@
     array_unshift($columns,['field'=>'id','checkbox'=>true]);
 @endphp
 <script type="text/javascript">
-    var dg=$('{{ '#'.$id }}').datagrid({
+    var dg{{ '_'.$id }}=$('{{ '#'.$id }}').datagrid({
         url:'{{$url}}',
         columns:{!! json_encode([$columns]) !!},
         method:'{{$method}}',

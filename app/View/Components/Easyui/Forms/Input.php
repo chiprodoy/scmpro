@@ -43,11 +43,14 @@ class Input extends Component
     public $inline=true;
 
     /*
+    */
+    public $readOnly='';
+    /*
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type,$id,$name,$label='',$inline=false,$value='')
+    public function __construct($type,$id,$name,$label='',$inline=false,$readOnly=false,$value='')
     {
         $this->type=$type;
         $this->id=$id;
@@ -55,6 +58,7 @@ class Input extends Component
         $this->label=(isset($label) ? $label : str_replace('_',' ',$name));
         $this->value=$value;
         $this->inline=$inline;
+        $this->readOnly=$readOnly;
         //
     }
 

@@ -5,7 +5,7 @@
                 <strong>{{$label}}</strong>
             </label>
             <div class="col-sm-10">
-            <input type="text" name="{{$name}}" id="{{$id}}" value="{{$value}}" autocomplete="given-name"
+            <input type="text" name="{{$name}}" {{(isset($readonly)) ? "readonly" : ""}} id="{{$id}}" value="{{$value}}" autocomplete="given-name"
             class="form-control" />
             </div>
         </div>
@@ -14,7 +14,7 @@
         <label for="{{$name}}">
             <strong>{{$label}}</strong>
         </label>
-        <input type="text" name="{{$name}}" id="{{$id}}" value="{{$value}}" autocomplete="given-name"
+        <input type="text" name="{{$name}}" {{(isset($readonly)) ? "readonly" : ""}} id="{{$id}}" value="{{$value}}" autocomplete="given-name"
         class="form-control form-control-sm" />
     </div>
 

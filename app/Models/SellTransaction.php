@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SellTransaction extends MainModel
 {
     use HasFactory;
+    protected $invoicePrefix='F/';
     protected $fillable = [
         'invoice_number','invoice_date','costumer_id','due_date','status_invoice','employee_id','total',
         'discount','grand_total','note'
@@ -30,5 +31,15 @@ class SellTransaction extends MainModel
             ['field'=>'grand_total','title'=>'Grand Total'],
             ['field'=>'note','title'=>'Catatan'],
         ];
+    }
+    public function setInvoiceNumberAttribute($value){
+        $latest = SellTransaction::latest()->first();
+        if($latest){
+            $this->attributes['invoice_number'] = $this->invoicePrefix.(str_pad((int)$latest->id + 1, 4, '0', STR_PAD_LEFT));
+
+        }else{
+            $this->attributes['invoice_number'] = $this->invoicePrefix.(str_pad( '1', 4, '0', STR_PAD_LEFT));
+
+        }
     }
 }

@@ -4,7 +4,7 @@ namespace App\View\Components\Easyui\Forms;
 
 use Illuminate\View\Component;
 
-class InputSelect extends Component
+class InputSelect extends Input
 {
     /**
      * The input id.
@@ -43,13 +43,14 @@ class InputSelect extends Component
      *
      * @return void
      */
-    public function __construct($id,$name,$label,$option,$value='')
+    public function __construct($id,$name,$label,$option,$value='',$inline=true)
     {
         $this->id=$id;
         $this->name=$name;
         $this->value=$value;
         $this->label=$label;
         $this->option=$option;
+        $this->inline=$inline;
         //
     }
 

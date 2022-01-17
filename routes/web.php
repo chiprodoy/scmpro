@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CostumerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InventoryItemController;
@@ -26,6 +27,8 @@ Route::get('/', function () {
 
 Route::resource('/home', HomeController::class);
 Route::resource('/produsen', ProdusenController::class);
+Route::resource('/costumer', CostumerController::class);
+
 Route::resource('/unit_measure', UnitMeasureController::class);
 Route::resource('/inventory', InventoryController::class);
 Route::resource('/inventory_item', InventoryItemController::class);

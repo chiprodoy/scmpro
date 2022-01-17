@@ -23,6 +23,7 @@ class CreateSellTransactionItemsTable extends Migration
                 $table->integer('sell_transaction_id');
                 $table->integer('inventory_item_id');
                 $table->integer('qty');
+                $table->decimal('price');
                 $table->integer('unit_measure_id');
                 $table->decimal('percentage_dicount');
                 $table->decimal('amount_dicount');
