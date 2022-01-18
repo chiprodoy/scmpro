@@ -21,6 +21,12 @@
                                         'value'=>'',
                                     ])
                                     @endcomponent
+                                    @component('components.easyui.forms.hidden',[
+                                        'id'=>"employee_id",
+                                        'name'=>"employee_id",
+                                        'value'=>'',
+                                    ])
+                                    @endcomponent
                             </div>
                             <div class="col-md-3">
                                 @component('components.easyui.forms.text',[
@@ -91,7 +97,6 @@
 $(document).ready(function(){
     $('#costumer_code').blur(function (e) {
         var costumerCode=$(this).val();
-        alert(costumerCode);
         $.get("{{ route('costumer.index') }}", {'costumer_code':costumerCode},
             function (data, textStatus, jqXHR) {
                 console.log(data);
@@ -108,10 +113,11 @@ $(document).ready(function(){
         if(invoice_number.length==0){
             $.post("{{ route('sell_transaction.index') }}", $('#frmCreateInvoice').serialize(),
                 function (data, textStatus, jqXHR) {
+                    $('#invoice_number').val(data.response.rows.invoice_number);
                 },
                 "json"
             );
-        }
+        }else{
         $.get("{{ route('sell_transaction.index') }}", {'invoice_number':invoice_number},
             function (data, textStatus, jqXHR) {
                 console.log(data);
@@ -121,7 +127,7 @@ $(document).ready(function(){
             },
             "json"
         );
-
+        }
         e.preventDefault();
 
     });

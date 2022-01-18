@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class SellTransaction extends MainModel
 {
@@ -39,6 +41,15 @@ class SellTransaction extends MainModel
 
         }else{
             $this->attributes['invoice_number'] = $this->invoicePrefix.(str_pad( '1', 4, '0', STR_PAD_LEFT));
+
+        }
+    }
+    public function setEmployeeIdAttribute($value){
+        if (App::environment(['production','staging'])) {
+            $this->attributes['employee_id'] = Auth::id();
+
+        }else{
+            $this->attributes['employee_id'] = 1;
 
         }
     }

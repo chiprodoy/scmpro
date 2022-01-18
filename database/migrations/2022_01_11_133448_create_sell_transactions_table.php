@@ -27,11 +27,10 @@ class CreateSellTransactionsTable extends Migration
                 $table->integer('due_date');
                 $table->integer('status_invoice'); //1=belum lunas, 2=lunas
                 $table->integer('employee_id');
-                $table->integer('total');
-                $table->decimal('discount');
-                $table->integer('grand_total');
+                $table->integer('total')->nullable();
+                $table->decimal('discount')->nullable();
+                $table->integer('grand_total')->nullable();
                 $table->text('note');
-
 
             });
             if(method_exists($this,'powerup')) $this->powerup();
