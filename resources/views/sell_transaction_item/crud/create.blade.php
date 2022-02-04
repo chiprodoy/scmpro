@@ -96,7 +96,7 @@
                         @endcomponent
                     </div>
                     <div class="col-md-12">
-                       <button type="submit" name="submit_sell_transaction_item" class="btn btn-block btn-default">
+                       <button id="btn_sell_transaction_item" type="submit" name="btn_sell_transaction_item" class="btn btn-block btn-default">
                         Tambahkan Item
                        </button>
                     </div>
@@ -106,3 +106,27 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </div><!-- end content -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#code_number').blur(function (e) {
+        var CodeNumber = $(this).val();
+        $.get("{{ route('inventory_stock.index') }}", {'code_number':CodeNumber},
+            function (data, textStatus, jqXHR) {
+                console.log(data);
+                $('#name').val(data.rows[0].inventory_items.name);
+                $('#price').val(data.rows[0].inventory_items.price);
+                $('#unit_measure_id').val(data.rows[0].inventory_items.unit_measure.unit_code);
+            },
+            "json"
+        );
+        e.preventDefault();
+
+    });
+   $('#btn_sell_transaction_item').click(function (e) {
+
+        e.preventDefault();
+
+    });
+});
+</script>

@@ -32,6 +32,8 @@ Route::resource('/costumer', CostumerController::class);
 Route::resource('/unit_measure', UnitMeasureController::class);
 Route::resource('/inventory', InventoryController::class);
 Route::resource('/inventory_item', InventoryItemController::class);
+Route::resource('/inventory_stock', InventoryItemController::class);
+
 
 Route::resource('/pointofsale', PointOfSaleContoller::class);
 Route::resource('/sell_transaction', SellTransactionController::class);
